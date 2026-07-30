@@ -1,5 +1,5 @@
 # toolshop-ai-testing-framework
-AI-assisted UI & API test automation framework for Practice Software Testing (Toolshop) using Playwright, Cursor AI and ChatGPT..
+AI-assisted UI & API test automation framework for Practice Software Testing (Toolshop) using Playwright, Cursor AI and ChatGPT.
 
 ---
 
