@@ -1,4 +1,4 @@
-# AI Tool Workflow
+# Tool Workflow
 
 ## Purpose
 
@@ -8,7 +8,7 @@ Every AI-generated output was manually reviewed, validated against the applicati
 
 ---
 
-# AI Tools Used
+# Tools Used
 
 | Tool | Purpose |
 |------|---------|
