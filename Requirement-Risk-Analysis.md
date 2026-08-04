@@ -208,6 +208,8 @@ Exploratory testing should cover:
 - Boundary input values
 - Unexpected navigation paths
 
+Detailed session charters, observations, findings (F-01..F-05), and exploratory-vs-scripted coverage are recorded in **`Exploratory-Testing-Notes.md`**.
+
 ---
 
 # 11. AI-Assisted Requirement Analysis

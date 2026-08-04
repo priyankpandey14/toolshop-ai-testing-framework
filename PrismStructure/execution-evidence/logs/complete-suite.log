@@ -1,0 +1,22 @@
+
+Running 13 tests using 2 workers
+
+(node:49867) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:49868) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 [chromium] › tests/api/purchase-flow-api.spec.js:32:3 › Purchase Flow API › Register Login And Create Cart @Smoke (2.5s)
+  ✓   3 [chromium] › tests/api/purchase-flow-api.spec.js:72:3 › Purchase Flow API › Login API @Smoke (659ms)
+  ✓   4 [chromium] › tests/api/purchase-flow-api.spec.js:97:3 › Purchase Flow API › Product Search API @Regression (531ms)
+  ✓   5 [chromium] › tests/api/purchase-flow-api.spec.js:121:3 › Purchase Flow API › Cart API @Regression (2.7s)
+  ✓   6 [chromium] › tests/api/purchase-flow-api.spec.js:167:3 › Purchase Flow API › Product Selection And Invoice Generation @Smoke (6.2s)
+  ✓   2 [chromium] › tests/ui/purchase-flow.spec.js:103:3 › Purchase Flow › User Registration @Smoke (12.4s)
+  ✓   7 [chromium] › tests/ui/purchase-flow.spec.js:133:3 › Purchase Flow › Valid Login @Smoke (5.6s)
+  ✓   8 [chromium] › tests/ui/purchase-flow.spec.js:151:3 › Purchase Flow › Invalid Login @Regression (4.0s)
+  ✓   9 [chromium] › tests/ui/purchase-flow.spec.js:169:3 › Purchase Flow › Product Search @Smoke (6.9s)
+  ✓  10 [chromium] › tests/ui/purchase-flow.spec.js:184:3 › Purchase Flow › Add Multiple Products to Cart @Smoke (21.9s)
+  ✓  11 [chromium] › tests/ui/purchase-flow.spec.js:206:3 › Purchase Flow › Update Quantity @Regression (18.9s)
+  ✓  12 [chromium] › tests/ui/purchase-flow.spec.js:236:3 › Purchase Flow › Checkout and Order Confirmation @Smoke (19.4s)
+  ✓  13 [chromium] › tests/ui/purchase-flow.spec.js:252:3 › Purchase Flow › View Invoice in My Invoices @Regression (21.3s)
+
+  13 passed (1.9m)

@@ -81,6 +81,7 @@ Reuse the same loop: context → requirements/risks → capped manual suite → 
 | Manual | 8 cases (Smoke + Regression) |
 | UI | 8 Playwright tests (`@Smoke` / `@Regression`) |
 | API | 5 Playwright tests (`@Smoke` / `@Regression`) |
+| Exploratory | Session-based notes in `Exploratory-Testing-Notes.md` (gaps beyond the 5–8 cap) |
 
 **End-to-end journey:** Registration/Login → Search → Multi-item Cart → Quantity Update → COD Checkout (double confirm) → My Invoices
 

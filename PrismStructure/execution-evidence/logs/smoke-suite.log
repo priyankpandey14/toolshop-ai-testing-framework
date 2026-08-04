@@ -1,0 +1,15 @@
+
+Running 8 tests using 1 worker
+
+(node:6831) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/api/purchase-flow-api.spec.js:32:3 › Purchase Flow API › Register Login And Create Cart @Smoke (2.6s)
+  ✓  2 [chromium] › tests/api/purchase-flow-api.spec.js:72:3 › Purchase Flow API › Login API @Smoke (594ms)
+  ✓  3 [chromium] › tests/api/purchase-flow-api.spec.js:167:3 › Purchase Flow API › Product Selection And Invoice Generation @Smoke (6.1s)
+  ✓  4 [chromium] › tests/ui/purchase-flow.spec.js:102:3 › Purchase Flow › User Registration @Smoke (10.2s)
+  ✓  5 [chromium] › tests/ui/purchase-flow.spec.js:132:3 › Purchase Flow › Valid Login @Smoke (4.9s)
+  ✓  6 [chromium] › tests/ui/purchase-flow.spec.js:168:3 › Purchase Flow › Product Search @Smoke (7.0s)
+  ✓  7 [chromium] › tests/ui/purchase-flow.spec.js:183:3 › Purchase Flow › Add Multiple Products to Cart @Smoke (20.9s)
+  ✓  8 [chromium] › tests/ui/purchase-flow.spec.js:235:3 › Purchase Flow › Checkout and Order Confirmation @Smoke (26.8s)
+
+  8 passed (1.3m)

@@ -18,6 +18,7 @@ Automates the assessment-critical journey:
 | UI | 8 tests — `@Smoke` / `@Regression` via Playwright Test + POM |
 | API | 5 tests — register/auth/cart/invoice lifecycle via `APIRequestContext` |
 | Manual | `FunctionalTestCase.csv` (8 cases) |
+| Exploratory | `Exploratory-Testing-Notes.md` (session-based notes beyond the 5–8 cap) |
 
 Supporting artifacts live at the repository root. Automation lives under `PrismStructure/`.
 
@@ -40,6 +41,7 @@ toolshop-ai-testing-framework/
 ├── .cursor/                             # Rules / Skills / MCP stub
 ├── FunctionalTestCase.csv
 ├── Requirement-Risk-Analysis.md
+├── Exploratory-Testing-Notes.md
 ├── Test-Execution-Report.md
 ├── project-info.md
 └── tool-workflow.md

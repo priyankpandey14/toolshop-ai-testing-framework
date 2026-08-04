@@ -1,0 +1,12 @@
+
+Running 5 tests using 1 worker
+
+(node:7680) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  1 [chromium] › tests/api/purchase-flow-api.spec.js:97:3 › Purchase Flow API › Product Search API @Regression (589ms)
+  ✓  2 [chromium] › tests/api/purchase-flow-api.spec.js:121:3 › Purchase Flow API › Cart API @Regression (2.1s)
+  ✓  3 [chromium] › tests/ui/purchase-flow.spec.js:150:3 › Purchase Flow › Invalid Login @Regression (3.9s)
+  ✓  4 [chromium] › tests/ui/purchase-flow.spec.js:205:3 › Purchase Flow › Update Quantity @Regression (17.4s)
+  ✓  5 [chromium] › tests/ui/purchase-flow.spec.js:251:3 › Purchase Flow › View Invoice in My Invoices @Regression (20.4s)
+
+  5 passed (45.0s)
