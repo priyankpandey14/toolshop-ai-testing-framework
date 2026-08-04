@@ -1,0 +1,24 @@
+# Dependencies
+node_modules/
+
+# Execution evidence — generated artifacts
+execution-evidence/html-report/**
+!execution-evidence/html-report/.gitkeep
+execution-evidence/test-results/**
+!execution-evidence/test-results/.gitkeep
+execution-evidence/logs/**
+!execution-evidence/logs/.gitkeep
+
+# Legacy paths (pre-migration)
+test-results/
+playwright-report/
+screenshots/**
+!screenshots/.gitkeep
+blob-report/
+playwright/.cache/
+
+# Auth / local secrets (never commit)
+.auth/
+.env
+.env.*
+!.env.example

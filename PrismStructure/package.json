@@ -1,0 +1,24 @@
+{
+  "name": "prismstructure",
+  "version": "1.0.0",
+  "main": "index.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "pretest": "mkdir -p execution-evidence/logs execution-evidence/screenshots execution-evidence/html-report execution-evidence/test-results",
+    "test": "npm run pretest && bash -c 'set -o pipefail; npx playwright test 2>&1 | tee execution-evidence/logs/complete-suite.log'",
+    "test:ui": "npm run pretest && bash -c 'set -o pipefail; npx playwright test tests/ui 2>&1 | tee execution-evidence/logs/ui-suite.log'",
+    "test:api": "npm run pretest && bash -c 'set -o pipefail; npx playwright test tests/api 2>&1 | tee execution-evidence/logs/api-suite.log'",
+    "test:smoke": "npm run pretest && bash -c 'set -o pipefail; npx playwright test --grep @Smoke 2>&1 | tee execution-evidence/logs/smoke-suite.log'",
+    "test:regression": "npm run pretest && bash -c 'set -o pipefail; npx playwright test --grep @Regression 2>&1 | tee execution-evidence/logs/regression-suite.log'",
+    "report": "playwright show-report execution-evidence/html-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "Playwright UI and API tests for Practice Software Testing (Toolshop)",
+  "devDependencies": {
+    "@playwright/test": "^1.62.1"
+  }
+}
