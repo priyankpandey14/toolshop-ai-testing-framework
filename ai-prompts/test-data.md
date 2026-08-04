@@ -15,15 +15,25 @@ All AI-generated test data recommendations were manually reviewed before impleme
 The selected business workflow:
 
 ```
+New User Registration
+        ↓
 Login
-   ↓
+        ↓
 Search Product
-   ↓
+        ↓
 View Product Details
-   ↓
+        ↓
 Add Product to Cart
-   ↓
-Checkout
+        ↓
+Validate Cart
+        ↓
+Update Product Quantity
+        ↓
+Proceed to Checkout
+        ↓
+Place Order
+        ↓
+Verify Order Confirmation
 ```
 
 The test data strategy was designed to support:

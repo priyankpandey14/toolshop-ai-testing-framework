@@ -1,316 +1,93 @@
 # Project Information
 
-## 1. Project Overview
-
-This repository contains my submission for the **QA AI Capability Assessment**. The objective of this project is to demonstrate how Artificial Intelligence can be effectively used throughout the Software Testing Life Cycle (STLC) while maintaining engineering ownership through validation, prompt refinement, and critical review.
-
-The project focuses on automating a critical end-to-end user journey of the **Practice Software Testing (Toolshop)** application using **Playwright (Prism Framework)**. AI tools were used to assist with requirement analysis, risk identification, test design, automation, debugging, documentation, and continuous improvement.
-
----
-
-# 2. Application Under Test
-
-**Application Name**
-
-Practice Software Testing (Toolshop)
-
-**UI**
-
-https://practicesoftwaretesting.com/
-
-**API Documentation**
-
-https://api.practicesoftwaretesting.com/api/documentation
+**Primary AI Tool(s) Used:** Cursor AI, ChatGPT  
+**Application Under Test:** Practice Software Testing (Toolshop) – Registration, Checkout & Invoice Flow  
+**Assessment Start Date:** 31 Jul 2026  
+**Submission Date:** 04 Aug 2026
 
 ---
 
-# 3. Scope of Testing
+## Project Summary
 
-The assessment focuses on validating one complete business workflow across both UI and API layers.
-
-### End-to-End User Journey
-
-```
-Login
-   ↓
-Search Product
-   ↓
-Add Product to Cart
-   ↓
-Checkout
-```
-
-### Testing Scope
-
-- UI Functional Testing
-- API Functional Testing
-- Smoke Testing
-- Regression Testing
-- Positive Scenarios
-- Negative Scenarios
-- Boundary Validation
-- Exploratory Testing
+This submission automates and documents the Toolshop customer journey: **register/login → search → multi-item cart → quantity update → Cash on Delivery checkout (confirm twice) → My Invoices**. UI and API layers are covered with Playwright (Prism-style POM), with AI used for analysis, design, coding assistance, and documentation — always with human validation.
 
 ---
 
-# 4. Objectives
-
-The primary objectives of this project are:
-
-- Understand application requirements using AI.
-- Identify business risks.
-- Design meaningful manual test cases.
-- Identify UI and API automation opportunities.
-- Implement Playwright automation for the selected workflow.
-- Validate AI-generated outputs before implementation.
-- Demonstrate iterative prompt refinement.
-- Produce reusable project documentation.
-
----
-
-# 5. Technology Stack
+## Tools Used
 
 | Category | Tool |
 |-----------|------|
-| UI Automation | Playwright |
-| API Automation | Playwright APIRequestContext |
+| UI Automation | Playwright Test (Chromium) |
+| API Automation | Playwright `APIRequestContext` |
 | Language | JavaScript |
-| Test Runner | Playwright Test |
+| IDE / AI | Cursor AI |
+| Planning AI | ChatGPT |
 | Version Control | Git & GitHub |
-| IDE | Cursor |
-| AI Assistants | Cursor AI, ChatGPT (GPT-5.5) |
-| Reporting | Playwright HTML Report |
+| Reporting | Playwright HTML/JSON + `execution-evidence/` |
+
+**UI:** https://practicesoftwaretesting.com/  
+**API:** https://api.practicesoftwaretesting.com/api/documentation
 
 ---
 
-# 6. AI Tools Used
+## Setup Summary (Part A)
 
-## Cursor AI
+### 1. How project and SUT context is provided to the tool
 
-Cursor AI was primarily used for:
+Each focused chat starts with: role (SDET), SUT URLs, selected business flow, stack (Playwright JS + POM), constraints (≤5–8 cases per type, smoke/regression tags, keep framework simple), and assessment AC examples (registration, multi-item COD checkout, My Invoices, double confirm).
 
-- Playwright project setup
-- Page Object Model generation
-- Automation implementation
-- Code refactoring
-- Debugging
-- Locator improvements
+### 2. How AI is used for requirement analysis
 
-## ChatGPT (GPT-5.5)
+AI helped extract functional requirements (login, search, cart, checkout, invoices), map them to FR-01..FR-04, and highlight risks. Outputs were checked against the live Toolshop UI/API before writing `Requirement-Risk-Analysis.md`.
 
-ChatGPT was used for:
+### 3. How AI is used for test planning and strategy
 
-- Requirement analysis
-- Risk analysis
-- Test strategy
-- Manual test case generation
-- API test scenario design
-- Prompt refinement
-- Documentation
-- Validation checklists
-- Root Cause Analysis
+AI proposed UI vs API split, smoke vs regression tagging, and prioritisation of the purchase journey. Final plan: UI smoke for happy path + registration; UI regression for negatives/quantity/invoices; API smoke for register/auth/invoice lifecycle; API regression for search/cart detail.
 
----
+### 4. How AI is used for manual test case design
 
-# 7. AI-Assisted Testing Workflow
+AI drafted positive, negative, and edge scenarios. Human review removed duplicates, capped the suite at **8** manual cases, and aligned steps to assessment AC1/AC2 language in `FunctionalTestCase.csv`.
 
-The following workflow was followed throughout the assessment:
+### 5. How AI is used for automation design
 
-```
-Requirement Analysis
-        ↓
-Risk Analysis
-        ↓
-Test Planning
-        ↓
-Prompt Creation
-        ↓
-AI Generated Output
-        ↓
-Manual Validation
-        ↓
-Prompt Refinement
-        ↓
-Automation Development
-        ↓
-Execution
-        ↓
-Documentation
-```
+Cursor assisted with POM pages, helpers, and specs under `PrismStructure/`. Design choices kept deliberately small: `pages/`, `tests/ui`, `tests/api`, `utils/`, single Chromium project, shared test data.
 
-AI outputs were never accepted directly. Every response was manually reviewed and refined before implementation.
+### 6. How AI-generated tests and scripts are validated
+
+Every suggestion was reviewed for locator quality, assertions, and sync. Fixes were proven by local execution (`npm run test:smoke`, `npm run test:regression`, `npm test`) before accepting changes. Prompt refinements are logged under `ai-prompts/`.
+
+### 7. How AI is used for test data, environment assumptions, and API payloads
+
+AI helped shape registration payloads, COD invoice body, and NL postcode-lookup billing data. Final data lives in `utils/testData.js` / `constants.js` with env overrides for demo credentials. Unique users are generated per registration run.
+
+### 8. How AI is used for debugging failing tests and interpreting logs
+
+Failures (single confirm, postcode race, out-of-stock add-to-cart, leaked-password 422) were pasted into Cursor with logs/HTML clues. Accepted only fixes that passed re-runs. See `ai-prompts/automation-and-debugging.md`.
+
+### 9. What information is avoided with AI tools
+
+Not shared: personal/private credentials beyond public demo context, tokens from real systems, secrets, proprietary org data. Demo account values stay in local constants/env; prompts describe patterns rather than leaking non-demo secrets.
+
+### 10. How this QA workflow would be reused on a real project
+
+Reuse the same loop: context → requirements/risks → capped manual suite → tagged smoke/regression automation → prompt log → execution evidence. Swap SUT URLs and data; keep POM + utils; enforce human review gates before merge.
 
 ---
 
-# 8. Requirement Analysis
+## Scope Snapshot
 
-The application requirements were first analysed using AI before creating any test artifacts.
+| Layer | Coverage |
+|-------|----------|
+| Manual | 8 cases (Smoke + Regression) |
+| UI | 8 Playwright tests (`@Smoke` / `@Regression`) |
+| API | 5 Playwright tests (`@Smoke` / `@Regression`) |
 
-The AI-assisted analysis helped identify:
-
-- Core business workflow
-- Critical user journey
-- Mandatory validations
-- High-risk functional areas
-- Automation opportunities
-- API dependencies
-- Edge cases
-
-The generated analysis was manually verified against the application before proceeding.
+**End-to-end journey:** Registration/Login → Search → Multi-item Cart → Quantity Update → COD Checkout (double confirm) → My Invoices
 
 ---
 
-# 9. Risk Analysis
+## Author
 
-The following business risks were identified:
+**Priyank Pandey** — Senior SDET  
 
-| Risk | Impact |
-|------|--------|
-| Login failure | User cannot access application |
-| Product search failure | User cannot locate products |
-| Cart failure | Purchase cannot proceed |
-| Checkout failure | Revenue impact |
-| Invalid API responses | Incorrect application behaviour |
-
-These risks influenced the prioritisation of smoke and regression scenarios.
-
----
-
-# 10. Test Design
-
-AI assisted in generating the initial set of test scenarios.
-
-The generated scenarios included:
-
-- Positive cases
-- Negative cases
-- Boundary conditions
-- Validation checks
-- Error handling
-- Exploratory scenarios
-
-Each scenario was manually reviewed.
-
-The following improvements were made before finalisation:
-
-- Removed duplicate scenarios
-- Improved expected results
-- Added missing edge cases
-- Added business validation
-- Improved test data quality
-
----
-
-# 11. Automation Strategy
-
-The automation focuses on one complete end-to-end business flow:
-
-```
-Login
-      ↓
-Search Product
-      ↓
-Add to Cart
-      ↓
-Checkout
-```
-
-UI automation validates the user journey while API automation validates the backend services supporting the same workflow.
-
-This combination provides better confidence than UI-only testing.
-
----
-
-# 12. Validation of AI Output
-
-All AI-generated artifacts were validated before implementation.
-
-Validation activities included:
-
-- Reviewing generated code
-- Executing automation scripts
-- Verifying assertions
-- Checking locator reliability
-- Validating API payloads
-- Reviewing expected responses
-- Removing duplicate logic
-- Refactoring reusable methods
-
-Engineering judgement was applied before accepting AI suggestions.
-
----
-
-# 13. Prompt Engineering
-
-Rather than relying on a single prompt, prompts were continuously refined throughout the assessment.
-
-Each refinement focused on improving:
-
-- Context
-- Business rules
-- Expected output
-- Test coverage
-- Automation quality
-
-Prompt history has been documented in the **ai-prompts** folder.
-
----
-
-# 14. Responsible AI Usage
-
-Sensitive information was intentionally excluded from AI prompts.
-
-The following information was never shared:
-
-- Passwords
-- Access tokens
-- Secrets
-- Personal data
-- Confidential organisational information
-- Proprietary implementation details
-
-Only information necessary for solving the engineering problem was provided.
-
----
-
-# 15. Project Deliverables
-
-This repository contains:
-
-- Requirement Analysis
-- Risk Analysis
-- Functional Test Cases
-- API Test Scenarios
-- Playwright UI Automation
-- Playwright API Automation
-- AI Prompt History
-- Validation Notes
-- Execution Reports
-- Screenshots
-
----
-
-# 16. Key Learnings
-
-This assessment demonstrated that AI is most effective when used as an engineering assistant rather than a replacement for engineering judgement.
-
-The quality of AI-generated outputs depends on:
-
-- Clear context
-- Well-structured prompts
-- Prompt refinement
-- Human validation
-- Critical review
-- Continuous improvement
-
-AI significantly accelerated repetitive tasks while the final responsibility for correctness, quality, maintainability, and testing decisions remained with the engineer.
-
----
-
-# Author
-
-**Priyank Pandey**
-
-Senior Software Development Engineer in Test (SDET)
-
-This project demonstrates AI-assisted software testing practices using Playwright, Cursor AI, and ChatGPT while following iterative prompt engineering and validation principles.
+AI accelerated repetitive drafting; correctness, scope control, and maintainability remained engineering-owned.

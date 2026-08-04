@@ -1,215 +1,140 @@
-# toolshop-ai-testing-framework
-AI-assisted UI & API test automation framework for Practice Software Testing (Toolshop) using Playwright, Cursor AI and ChatGPT.
+# Toolshop AI Testing Framework
+
+Playwright-based UI and API automation for [Practice Software Testing (Toolshop)](https://practicesoftwaretesting.com/), built with a simple Page Object Model and reusable test data.
+
+**UI:** https://practicesoftwaretesting.com  
+**API:** https://api.practicesoftwaretesting.com/api/documentation
 
 ---
 
 ## Project Overview
 
-This repository contains the submission for the **QA AI Capability Exercise**, demonstrating an AI-assisted testing workflow for the **Practice Software Testing (Toolshop)** application.
+Automates the assessment-critical journey:
 
-The objective is not only to automate tests but also to showcase how AI was effectively used throughout the Software Testing Life Cycle (STLC), including:
+**Register/Login → Product Search → Multi-item Cart → Quantity Update → COD Checkout (confirm twice) → My Invoices**
 
-- Requirement Analysis
-- Risk Assessment
-- Test Planning
-- Manual Test Design
-- API Test Design
-- UI Automation
-- API Automation
-- Test Data Generation
-- Debugging
-- Documentation
-- Prompt Engineering
-- Validation of AI-generated outputs
+| Layer | Coverage |
+|-------|----------|
+| UI | 8 tests — `@Smoke` / `@Regression` via Playwright Test + POM |
+| API | 5 tests — register/auth/cart/invoice lifecycle via `APIRequestContext` |
+| Manual | `FunctionalTestCase.csv` (8 cases) |
+
+Supporting artifacts live at the repository root. Automation lives under `PrismStructure/`.
 
 ---
 
-## System Under Test
-
-### UI
-
-https://practicesoftwaretesting.com/
-
-### API
-
-https://api.practicesoftwaretesting.com/api/documentation
-
----
-
-## Technology Stack
-
-| Area | Tool |
-|-------|------|
-| Language | JavaScript / TypeScript |
-| UI Automation | Playwright |
-| API Testing | Playwright APIRequestContext |
-| Test Runner | Playwright Test |
-| AI Assistant | Cursor AI |
-| AI Assistant | ChatGPT (GPT-5.5) |
-| Version Control | Git |
-| Reporting | Playwright HTML Report |
-
----
-
-## Project Structure
+## Folder Structure
 
 ```
-qa-ai-practical-assessment/
-
-├── README.md
-├── project-info.md
-├── Requirement-Risk-Analysis.md
-├── FunctionalTestCase.csv
-
-├── PrismStructure/
-│
+toolshop-ai-testing-framework/
+├── PrismStructure/                      # Playwright project root
+│   ├── pages/                           # Page Object Model
+│   ├── tests/
+│   │   ├── ui/                          # UI specs
+│   │   └── api/                         # API specs
+│   ├── utils/                           # Constants, test data, API helpers
+│   ├── execution-evidence/              # Reports, logs, screenshots
+│   ├── playwright.config.js
+│   └── package.json
 ├── ai-prompts/
-│
-├── screenshots/
-│
-└── execution-reports/
+├── .cursor/                             # Rules / Skills / MCP stub
+├── FunctionalTestCase.csv
+├── Requirement-Risk-Analysis.md
+├── Test-Execution-Report.md
+├── project-info.md
+└── tool-workflow.md
 ```
 
 ---
 
-## Scope
-
-The assessment covers:
-
-### Manual Testing
-
-- Functional Testing
-- Positive Scenarios
-- Negative Scenarios
-- Edge Cases
-- Smoke Tests
-- Regression Tests
-
-### UI Automation
-
-- Registration
-- Login
-- Product Search
-- Add to Cart
-- Checkout
-- Invoice Verification
-
-### API Automation
-
-- User Registration
-- Authentication
-- Product Retrieval
-- Cart Operations
-- Invoice Generation
-
----
-
-## Test Strategy
-
-The testing approach follows the AI-assisted testing lifecycle:
-
-```
-Requirement Analysis
-        ↓
-Risk Analysis
-        ↓
-Test Planning
-        ↓
-Manual Test Design
-        ↓
-Automation Design
-        ↓
-Implementation
-        ↓
-Execution
-        ↓
-Validation
-        ↓
-Documentation
-```
-
----
-
-## Smoke Suite
-
-Smoke tests validate the critical user journey:
-
-- User Login
-- Product Search
-- Add Product to Cart
-- Checkout
-- Invoice Generation
-
-Run:
+## Installation
 
 ```bash
-npx playwright test --grep @Smoke
+cd PrismStructure
+npm install
+npx playwright install chromium
 ```
 
----
+**Requirements:** Node.js 18+ and npm.
 
-## Regression Suite
-
-Regression tests cover all critical functional areas.
-
-Run:
+Optional credential overrides for the published demo customer:
 
 ```bash
-npx playwright test --grep @Regression
+export TOOLSHOP_VALID_EMAIL="your-demo-email@example.com"
+export TOOLSHOP_VALID_PASSWORD="your-demo-password"
 ```
+
+Registration tests generate unique users automatically (no shared password reuse).
 
 ---
 
-## Execute All Tests
+## Run Tests
 
 ```bash
-npx playwright test
+cd PrismStructure
 ```
 
----
+| Suite | Command |
+|-------|---------|
+| Smoke (UI + API `@Smoke`) | `npm run test:smoke` |
+| Regression (UI + API `@Regression`) | `npm run test:regression` |
+| Complete (UI + API) | `npm test` |
+| UI only | `npm run test:ui` |
+| API only | `npm run test:api` |
 
-## View HTML Report
+CI-style (headless + retries):
 
 ```bash
-npx playwright show-report
+CI=true npm test
 ```
 
 ---
 
-## AI-Assisted Workflow
+## Test Data
 
-AI was used throughout the project to assist in:
+| Data | Location |
+|------|----------|
+| URLs, messages, schemas | `PrismStructure/utils/constants.js` |
+| Scenario datasets / registration factory | `PrismStructure/utils/testData.js` |
+| Manual cases | `FunctionalTestCase.csv` |
 
-- Requirement Analysis
-- Risk Identification
-- Test Strategy
-- Manual Test Case Generation
-- API Test Design
-- Automation Framework Design
-- Code Generation
-- Debugging
-- Documentation
+---
 
-Every AI-generated artifact was manually reviewed, validated, refined, and updated before inclusion.
+## Execution Evidence
 
-Prompt history is available under:
+All run evidence is under:
 
-```
-ai-prompts/
+`PrismStructure/execution-evidence/`
+
+| Artifact | Path |
+|----------|------|
+| HTML report | `execution-evidence/html-report/index.html` |
+| Flow screenshots | `execution-evidence/screenshots/` |
+| Traces / failure artifacts | `execution-evidence/test-results/` |
+| Suite logs | `execution-evidence/logs/*.log` |
+| Machine-readable results | `execution-evidence/logs/results.json` |
+| Human summary | `execution-evidence/execution-summary.md` |
+
+Open the HTML report:
+
+```bash
+cd PrismStructure
+npm run report
 ```
 
 ---
 
-## Test Evidence
+## Assumptions
 
-The repository contains:
+- Target environment is the public Toolshop demo (UI + API).
+- Default customer credentials are the published demo account (overridable via env vars).
+- Products under test default to **Pliers** / **Hammer** search keywords with in-stock fallback.
+- COD checkout requires **Confirm/Finish twice** to generate the invoice number.
+- Billing uses postcode-lookup compatible NL values (`3512 JC` / house `1`).
+- Network access to `practicesoftwaretesting.com` and `api.practicesoftwaretesting.com` is available.
 
-- Manual Test Cases
-- UI Automation
-- API Automation
-- HTML Reports
-- Screenshots
-- Prompt History
-- Requirement Analysis
-- Risk Analysis
-- Execution Evidence
+---
+
+## AI Prompt History
+
+See `ai-prompts/` for requirements, test design, test data, automation/debugging, and documentation prompt logs.

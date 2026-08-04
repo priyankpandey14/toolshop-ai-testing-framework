@@ -108,32 +108,35 @@ Therefore, selecting the correct workflow before designing tests was an importan
 AI recommended the following workflow:
 
 ```
+New User Registration
+        ↓
 Login
-
-↓
-
+        ↓
 Search Product
-
-↓
-
+        ↓
 View Product Details
-
-↓
-
+        ↓
 Add Product to Cart
-
-↓
-
-Checkout
+        ↓
+Validate Cart
+        ↓
+Update Product Quantity
+        ↓
+Proceed to Checkout
+        ↓
+Place Order
+        ↓
+Verify Order Confirmation
 ```
 
-The recommendation highlighted that this flow:
+**Reason for Selection**
 
-- represents the primary customer journey
-- exercises multiple business modules
-- supports both UI and API automation
-- provides high business value
-- demonstrates end-to-end validation
+- Covers the complete customer lifecycle from account creation to successful order placement.
+- Includes the highest business-critical user journey of the application.
+- Maximizes requirement traceability across manual testing, UI automation, API automation, and execution evidence.
+- Covers positive, negative, validation, and edge-case scenarios.
+- Suitable for both Smoke and Regression testing.
+- Provides maximum business value while keeping automation maintainable and scalable.
 
 ---
 

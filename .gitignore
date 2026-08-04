@@ -1,0 +1,31 @@
+# Dependencies
+node_modules/
+
+# Playwright / execution evidence (generated locally; keep folder markers)
+PrismStructure/execution-evidence/html-report/**
+!PrismStructure/execution-evidence/html-report/.gitkeep
+PrismStructure/execution-evidence/test-results/**
+!PrismStructure/execution-evidence/test-results/.gitkeep
+PrismStructure/execution-evidence/logs/**
+!PrismStructure/execution-evidence/logs/.gitkeep
+!PrismStructure/execution-evidence/logs/.gitkeep
+
+# Legacy artifact paths (removed after migration; keep ignored if recreated)
+PrismStructure/test-results/
+PrismStructure/playwright-report/
+PrismStructure/screenshots/**
+!PrismStructure/screenshots/.gitkeep
+blob-report/
+playwright/.cache/
+
+# Auth / local secrets (never commit)
+.auth/
+.env
+.env.*
+!.env.example
+
+# OS / editor
+.DS_Store
+*.log
+.idea/
+.vscode/

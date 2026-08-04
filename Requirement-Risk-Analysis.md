@@ -24,13 +24,17 @@ The application is an e-commerce platform where users can browse products, authe
 For this assessment, the following business-critical workflow has been selected:
 
 ```
-Login
+Register / Login
    ↓
 Search Product
    ↓
-Add Product to Cart
+Add Multiple Products to Cart
    ↓
-Checkout
+Update Quantity
+   ↓
+Checkout (Cash on Delivery, confirm twice)
+   ↓
+View Invoice under My Invoices
 ```
 
 This represents the application's primary revenue-generating user journey and therefore has been chosen for detailed testing and automation.
@@ -39,13 +43,15 @@ This represents the application's primary revenue-generating user journey and th
 
 # 3. Functional Requirements
 
-## FR-01 User Login
+## FR-01 User Registration & Login
 
 The system shall:
 
+- Allow new users to register with valid details.
 - Allow registered users to log in using valid credentials.
 - Reject invalid username/password combinations.
 - Display appropriate validation messages.
+- Expose profile information for the authenticated user.
 - Prevent unauthorized access to protected pages.
 
 ---
@@ -66,19 +72,22 @@ The system shall:
 The system shall:
 
 - Allow users to add products to the shopping cart.
+- Support adding multiple products.
 - Display correct product information.
 - Maintain cart information during the user session.
 - Allow users to update quantities before checkout.
 
 ---
 
-## FR-04 Checkout
+## FR-04 Checkout & Invoices
 
 The system shall:
 
-- Allow checkout for valid cart items.
+- Allow checkout for valid cart items using Cash on Delivery.
 - Validate mandatory customer information.
-- Display order confirmation after successful checkout.
+- Require confirmation to generate the invoice (confirm twice in UI).
+- Display order confirmation with an invoice number after successful checkout.
+- List generated invoices under My Invoices.
 - Prevent order placement when mandatory information is missing.
 
 ---

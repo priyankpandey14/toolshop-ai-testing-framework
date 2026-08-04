@@ -19,15 +19,25 @@ Every AI-generated recommendation was manually reviewed before being accepted.
 # Selected Business Workflow
 
 ```
+New User Registration
+        ↓
 Login
-   ↓
+        ↓
 Search Product
-   ↓
+        ↓
 View Product Details
-   ↓
+        ↓
 Add Product to Cart
-   ↓
-Checkout
+        ↓
+Validate Cart
+        ↓
+Update Product Quantity
+        ↓
+Proceed to Checkout
+        ↓
+Place Order
+        ↓
+Verify Order Confirmation
 ```
 
 This workflow was selected because it represents the application's primary customer journey while covering authentication, search, shopping cart and checkout functionality.
@@ -159,10 +169,25 @@ The recommendations were manually reviewed.
 
 The following workflow was selected for automation:
 
-- Login
-- Product Search
-- Add Product to Cart
-- Checkout
+-New User Registration
+        ↓
+Login
+        ↓
+Search Product
+        ↓
+View Product Details
+        ↓
+Add Product to Cart
+        ↓
+Validate Cart
+        ↓
+Update Product Quantity
+        ↓
+Proceed to Checkout
+        ↓
+Place Order
+        ↓
+Verify Order Confirmation
 
 Visual verification scenarios and exploratory scenarios were intentionally kept manual.
 
