@@ -1,4 +1,4 @@
-# Toolshop AI Testing Framework
+# Toolshop QA AI Practical Assessment
 
 Playwright-based UI and API automation for [Practice Software Testing (Toolshop)](https://practicesoftwaretesting.com/), built with a simple Page Object Model and reusable test data.
 
@@ -23,11 +23,25 @@ Automates the assessment-critical journey:
 Supporting artifacts live at the repository root. Automation lives under `PrismStructure/`.
 
 ---
+## Assessment Deliverables
 
+This repository includes:
+
+- Requirement & Risk Analysis
+- Project Information
+- Manual Functional Test Cases
+- UI Automation (Playwright)
+- API Automation
+- Test Data Strategy
+- Execution Evidence
+- AI Prompt History
+- Documentation
+
+-----
 ## Folder Structure
 
 ```
-toolshop-ai-testing-framework/
+toolshop-qa-ai-practical-assessment/
 ├── PrismStructure/                      # Playwright project root
 │   ├── pages/                           # Page Object Model
 │   ├── tests/
