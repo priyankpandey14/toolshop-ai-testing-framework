@@ -1,13 +1,16 @@
 # Dependencies
 node_modules/
 
-# Execution evidence — generated artifacts
-execution-evidence/html-report/**
-!execution-evidence/html-report/.gitkeep
+# Execution evidence
+# Track HTML report for reviewers. Ignore bulky traces only.
 execution-evidence/test-results/**
 !execution-evidence/test-results/.gitkeep
 execution-evidence/logs/**
 !execution-evidence/logs/.gitkeep
+!execution-evidence/logs/results.json
+!execution-evidence/logs/complete-suite.log
+!execution-evidence/logs/smoke-suite.log
+!execution-evidence/logs/regression-suite.log
 
 # Legacy paths (pre-migration)
 test-results/

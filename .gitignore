@@ -1,14 +1,17 @@
 # Dependencies
 node_modules/
 
-# Playwright / execution evidence (generated locally; keep folder markers)
-PrismStructure/execution-evidence/html-report/**
-!PrismStructure/execution-evidence/html-report/.gitkeep
+# Playwright / execution evidence
+# Keep the HTML report tracked so reviewers can open it without regenerating.
+# Ignore bulky traces and ephemeral failure artifacts only.
 PrismStructure/execution-evidence/test-results/**
 !PrismStructure/execution-evidence/test-results/.gitkeep
 PrismStructure/execution-evidence/logs/**
 !PrismStructure/execution-evidence/logs/.gitkeep
-!PrismStructure/execution-evidence/logs/.gitkeep
+!PrismStructure/execution-evidence/logs/results.json
+!PrismStructure/execution-evidence/logs/complete-suite.log
+!PrismStructure/execution-evidence/logs/smoke-suite.log
+!PrismStructure/execution-evidence/logs/regression-suite.log
 
 # Legacy artifact paths (removed after migration; keep ignored if recreated)
 PrismStructure/test-results/
@@ -27,5 +30,6 @@ playwright/.cache/
 # OS / editor
 .DS_Store
 *.log
+!PrismStructure/execution-evidence/logs/*.log
 .idea/
 .vscode/
